@@ -48,7 +48,7 @@ func (g *Galois) AESDecrypt(data []byte) ([]byte, error) {
 
 </pre>
 
-Example Usage:
+<h1>Example Usage:</h1>
 
 <pre>
 package main                                                        

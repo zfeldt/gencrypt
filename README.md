@@ -1,4 +1,4 @@
-ES256 encryption for Go</h1>
+<h1>Gencrypt: even easier AES256 encryption for Go</h1>
 
 **Gencrypt** is a Go package that acts as a wrapper around portions of the 
 standard libraries crypto package.  It depends on only the standard library and 

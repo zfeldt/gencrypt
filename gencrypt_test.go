@@ -24,8 +24,8 @@ import (
 	"strings"
 	"testing"
 
-	"gitlab.com/sigma7/gencrypt"
 	"gitlab.com/sigma7/slicerip"
+	"gitlab.com/zfeldt/gencrypt"
 )
 
 // NOTE: Encryption can be tricky and it's important to run a few visual tests

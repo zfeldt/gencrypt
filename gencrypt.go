@@ -16,6 +16,9 @@
 // this program; if not, write to the Free Software Foundation, Inc., 51
 // Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
+// NOTE: This is a wrapper around portions of the standard libraries crypto
+// package.
+
 // Package gencrypt provides methods for encrypting and decrypting data with
 // the AES encryption method. Based on George Tankersley's talk at Gophercon
 // 2016.

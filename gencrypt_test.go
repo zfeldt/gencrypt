@@ -21,6 +21,7 @@
 package gencrypt
 
 import (
+	"crypto/aes"
 	"strings"
 	"testing"
 
@@ -38,18 +39,11 @@ import (
 var (
 	// data should be of length aes/cipher.BlockSize + n where n > 0 to ensure
 	// that multiple blocks are being encrypted/decrypted.
-	data = []byte(`test test test test test test test test test test test test 
-test test test test test test test test test test test test test test test test 
-test test test test test test test test test test test test test test test test 
-test test test test test test test test test test test test test test test test 
-test test test test test test test test test test test test test test test test 
-test test test test test test test test test test test test test test test test 
-test test test test test test test test test test test test test test test test 
-test test test test test test test test test test test test test test test test 
-test test test test test test test test test test test test test test test test 
-test test test test test test test test test test test test test test test test 
-test test test test test test test test test test test test test test test test 
-test test test test test test test test test test test test test test test test 
+	data = []byte(`test test test test test test test test test test test test
+test test test test test test test test test test test test test test test test
+test test test test test test test test test test test test test test test test
+test test test test test test test test test test test test test test test test
+test test test test test test test test test test test test test test test test
 `)
 	key = []byte("12345678901234561234567890123456")
 )
@@ -103,7 +97,7 @@ func TestGencrypt(t *testing.T) {
 	ripped := slicerip.Extract(string(data), 3, 10)
 	for _, v := range ripped {
 		if strings.Contains(string(encData), v) {
-			t.Error(`error`)
+			t.Error("TEST FAILED: ENCRYPTED DATA APPEARS TO CONTAIN ORIGINAL DATA.")
 		}
 	}
 
@@ -113,7 +107,16 @@ func TestGencrypt(t *testing.T) {
 
 	// Test: Make sure the decrypted data matches the original data:
 	if string(decData) != string(data) {
-		t.Error(`DECRYPTION FAILED!!!`)
+		t.Error("TEST FAILED: DECRYPTED DATA DOES NOT MATCH ORIGINAL.")
+	}
+}
+
+// TestDataSize tests to make sure the data is larger the the aes.Blocksize (16
+// bytes). If the data were smaller we wouldn't know if the GCM was working
+// properly as it encrypts streams of data in 16-byte blocks.
+func TestDataSize(t *testing.T) {
+	if len(data) < aes.BlockSize {
+		t.Error("TEST FAILED: DATA MUST BE LONGER THAN ", aes.BlockSize, " BYTES.")
 	}
 }
 

@@ -4,7 +4,7 @@
 standard libraries crypto package.  It depends on only the standard library and
 is very small at only 40 lines (uncommented, not including tests):
 
-<pre>
+```go
 package gencrypt
 
 import (
@@ -46,11 +46,10 @@ func (g *Galois) AESDecrypt(data []byte) ([]byte, error) {
   return g.GCM.Open(nil, data[:g.GCM.NonceSize()], data[g.GCM.NonceSize():], nil)
 }
 
-</pre>
-
+```
 <h1>Example Usage:</h1>
 
-<pre>
+```go
 package main
 
 import (
@@ -80,4 +79,4 @@ func main() {
   dec, _ := gcm.AESDecrypt(enc)
   fmt.Println(string(dec))
 }
-</pre>
+```

@@ -22,8 +22,8 @@ var (
   // Data you want to encrypt
   data = []byte("test data")
   // Secret key. A 32-byte key is used to indicate AES-256. 16 and 24-byte keys
-	// are accepted for AES-128 and AES-192 respectively, but are not
-	// recommended.
+  // are accepted for AES-128 and AES-192 respectively, but are not
+  // recommended.
   key = []byte("12345678901234561234567890123456")
 )
 
@@ -49,4 +49,5 @@ the AES encryption process [1].
 > architectures are probably not fit for production use. [1]
 
 [0] https://en.wikipedia.org/wiki/AES_instruction_set#New_instructions
+
 [1] https://blog.gopheracademy.com/advent-2016/exposing-go-on-the-internet/

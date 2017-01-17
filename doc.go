@@ -1,6 +1,16 @@
 /*
-Gencrypt is a Go package that acts as a wrapper around portions of the
+gencrypt is a Go package that acts as a wrapper around portions of the
 standard libraries crypto package.
+
+// NOTE: For those deploying on systems not equipped with CPUs supporting
+// AES-NI [0], you should be aware of possible bottle-necks when it comes to
+// the AES encryption process [1].
+// >>"Final caveat, all these recommendations apply only to the amd64
+// >> architecture, for which fast, constant time implementations of the crypto
+// >> primitives (AES-GCM, ChaCha20-Poly1305, P256) are available. Other
+// >> architectures are probably not fit for production use." [1]
+// [0] https://en.wikipedia.org/wiki/AES_instruction_set#New_instructions
+// [1] https://blog.gopheracademy.com/advent-2016/exposing-go-on-the-internet/
 
 /////////////////////////////////////
 // Example Usage: ///////////////////
@@ -15,12 +25,14 @@ import (
 )
 
 // NOTE: Error checking not handled in this example but should be in
-// production.
+// production
 
 var (
   // Data you want to encrypt
   data = []byte("test data")
-  // Secret key
+  // Secret key. A 32-byte key is used to indicate AES-256. 16 and 24-byte keys
+	// are accepted for AES-128 and AES-192 respectively, but are not
+	// recommended.
   key = []byte("12345678901234561234567890123456")
 )
 

@@ -2,7 +2,9 @@
 
 **Gencrypt** is a Go package that acts as a wrapper around portions of the
 standard libraries crypto package.  It depends on only the standard library and
-is very small at only 40 lines (uncommented, not including tests).
+is very small at only 40 lines (uncommented, not including tests). Based on
+George Tankersley's talk at Gophercon 2016.
+
 
 <h1>Example Usage:</h1>
 
